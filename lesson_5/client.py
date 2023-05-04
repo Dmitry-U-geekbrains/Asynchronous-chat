@@ -15,6 +15,7 @@ from common.utils import get_message, send_message
 CLIENT_LOGGER = logging.getLogger('client')
 
 
+@log
 def create_presence(account_name='Guest'):
     out = {
         ACTION: PRESENCE,
@@ -27,6 +28,7 @@ def create_presence(account_name='Guest'):
     return out
 
 
+@log
 def process_ans(message):
     CLIENT_LOGGER.debug(f'Разбор сообщения от сервера: {message}')
     if RESPONSE in message:
@@ -36,6 +38,7 @@ def process_ans(message):
     raise ReqFieldMissingError(RESPONSE)
 
 
+@log
 def create_arg_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('addr', default=DEFAULT_IP_ADDRESS, nargs='?')
